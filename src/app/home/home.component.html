@@ -57,11 +57,89 @@
                     mat-card-image />
                 <mat-card-content>
                     <div style="display:flex; flex-direction:column; align-items:center">
-                        <span style="margin: 0; font-weight: bold;">Tomoto</span>
-                        <span>Starting At 695</span>
+                        <!-- <span style="margin: 0; font-weight: bold;">Tomoto</span> -->
+                        <!-- <span>Starting At 695</span> -->
+                        <div class="mobile-card-details">
+                            <span style="margin: 0; font-weight: bold;">{{item.itemName}}</span>
+                           <span [ngClass]="'strikethrough'">{{item.regularPrice}}</span>{{item.regularPrice}}
+                        </div>
+                    </div>
+                    <div class="mobile-card-footer">
+                        <button mat-button mat-stroked-button color="primary" class="button">
+                            ADD TO CART
+                        </button>
+                        <button mat-button>SHARE
+                        </button>
                     </div>
                 </mat-card-content>
             </mat-card>
+
+            <div class="mobile" *ngFor="let item of items" (click)="productHome(item.id)">
+                <!-- <div class="mobile-card-container">
+                    <div class="mobile-card-img">
+                        <owl-carousel [options]="carouselOptions" [items]="item.image"
+                            [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                            <div class="item" *ngFor="let image of item.image; let i = index">
+                                <div class="thumbnail-image">
+                                    <img src="https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-8.jpg" class="productImg" mat-card-image />
+                                </div>
+                            </div>
+                        </owl-carousel>
+                    </div>
+                    <div class="mobile-card-details">
+                        <h3>{{item.itemName}}</h3>
+                        <p><span [ngClass]="'strikethrough'">{{item.regularPrice}}</span>{{item.regularPrice}}</p>
+                    </div>
+                </div>
+                <div class="mobile-card-footer">
+                    <button mat-button mat-stroked-button color="primary" class="button">
+                        ADD TO CART
+                    </button>
+                    <button mat-button>SHARE
+                    </button>
+                </div> -->
+                <mat-card class="example-card onLoad border" (click)="productHome(item.id)">
+                    <img src="https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-8.jpg" class="productImg"
+                        mat-card-image />
+                    <mat-card-content>
+                        <div style="display:flex; flex-direction:column; align-items:center">
+                            <!-- <span style="margin: 0; font-weight: bold;">Tomoto</span> -->
+                            <!-- <span>Starting At 695</span> -->
+                            <div class="mobile-card-details">
+                                <span style="margin: 0; font-weight: bold;">{{item.itemName}}</span>
+
+                            </div>
+                            <div>
+                                MRP. <span style="font-size: 12px;" [ngClass]="'strikethrough'">Rs.{{item.regularPrice}}</span> &nbsp; Rs. {{item.regularPrice}}
+                            </div>
+                            <div>
+                                <span class="input-group-addon"> Qty </span> 
+                                <input type="number" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength"/>
+                            </div>
+                        </div>
+                        
+
+                        <!-- <div class="col-sm-12">
+                            <div class="col-sm-3">Qty</div>
+                            <div class="col-sm-5">
+                                <input type="number" />
+                            </div>
+                            <div class="col-sm-4">
+                                SHARE
+                            </div>
+                        </div> -->
+
+                        <div class="mobile-card-footer">
+                            <button mat-button mat-stroked-button color="primary" class="button">
+                                ADD TO CART
+                            </button>
+                            <button mat-button>SHARE
+                            </button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
         </div>
         <div class="body" style="background-color:white">
             <div class="img-box onLoad">

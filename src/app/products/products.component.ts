@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
     autoHeightClass: 'owl-height',
     
 }
-images = [
+productArr = [
   { 'id': 'JP100363', 'price': 140, 'image': 'https://cdn.shopify.com/s/files/1/1276/5299/products/g_0111_480x.jpg?v=1568378285'},
   { 'id': 'JP245541', 'price': 241.50, 'image': 'https://cdn.shopify.com/s/files/1/1276/5299/products/1_8f19a067-4ebe-4c23-9bde-a65d0818e0f4_480x.jpg?v=1546410357'},
   { 'id': 'JP500450', 'price': 280.60, 'image': 'https://cdn.shopify.com/s/files/1/1276/5299/products/g_7932_480x.jpg?v=1549026759'},

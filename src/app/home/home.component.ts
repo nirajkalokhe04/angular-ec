@@ -3,6 +3,7 @@ import {MatIconRegistry} from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
+import { ItemModal } from '../modal/item-modal';
 
 
 @Component({
@@ -24,11 +25,16 @@ export class HomeComponent implements OnInit {
     autoHeightClass: 'owl-height',
     
 }
-images:[];
+images    :   [];
+items     :   ItemModal[];
 default = new Array(4);
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private productService: ProductService) {
   
+    this.productService.getAllItems().subscribe(res => {
+      this.items = res;
+    });
+
     this.productService.getAllProducts().subscribe(res => {
       this.images = res;
     });
