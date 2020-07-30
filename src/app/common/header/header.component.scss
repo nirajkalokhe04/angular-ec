@@ -1,5 +1,5 @@
 .contact-box{
-    background: #468604;
+    background: #28a745;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -336,4 +336,13 @@ input::-webkit-input-placeholder {
     border-color: rgb(246, 246, 246);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
     width: 300px;
+}
+.menu p:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+@media only screen and (max-width: 500px){
+    .hide-on-mobile{
+        display: none;
+    }
 }

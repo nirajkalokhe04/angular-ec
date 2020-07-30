@@ -19,9 +19,11 @@ body{
     color: black;
     letter-spacing: 0.5px;
     background: #f8f9fa;
+    outline:none !important;
 }
 p {
     font-size: 14px;
+    outline:none !important;
 }
 span{
     font-size: 14px;
@@ -251,4 +253,10 @@ button{
 
 .pointer{
     cursor: pointer;
+}
+.owl-theme{
+    margin: 0px !important ;
+}
+.bg-color{
+    background-color: #defaf2;
 }

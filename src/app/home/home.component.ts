@@ -12,19 +12,20 @@ import { ItemModal } from '../modal/item-modal';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  carouselOptions = 
-  {
-    items: 1, 
-    dots: false, 
-    center: true,
-    navigation: false, 
-    loop:true,
-    autoplay:false,
-    animateOut: 'fadeOut',
-    autoHeight: true,
-    autoHeightClass: 'owl-height',
+//   carouselOptions = 
+//   {
+//     items: 4, 
+//     dots: false, 
+//     center: true,
+//     navigation: false, 
+//     loop:true,
+//     autoplay:false,
+//     animateOut: 'fadeOut',
+//     autoHeight: true,
+//     autoHeightClass: 'owl-height',
     
-}
+// }
+
 images    :   [];
 items     :   ItemModal[];
 default = new Array(4);
