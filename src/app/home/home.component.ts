@@ -12,22 +12,29 @@ import { ItemModal } from '../modal/item-modal';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  carouselOptions = 
-  {
-    items: 1, 
-    dots: false, 
-    center: true,
-    navigation: false, 
-    loop:true,
-    autoplay:false,
-    animateOut: 'fadeOut',
-    autoHeight: true,
-    autoHeightClass: 'owl-height',
+//   carouselOptions = 
+//   {
+//     items: 4, 
+//     dots: false, 
+//     center: true,
+//     navigation: false, 
+//     loop:true,
+//     autoplay:false,
+//     animateOut: 'fadeOut',
+//     autoHeight: true,
+//     autoHeightClass: 'owl-height',
     
-}
+// }
+
 images    :   [];
 items     :   ItemModal[];
+showOffers  : Boolean   =   false;
+offerData   :   [];
 default = new Array(4);
+item      :{
+  name  : 'string',
+  id    :   'string'
+}
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private productService: ProductService) {
   
@@ -44,7 +51,18 @@ default = new Array(4);
   }
 
   ngOnInit() {
+    this.getoffers();
   }
+
+  getoffers(){
+    this.productService.getdashboardoffers().subscribe(res => {
+      this.offerData = res;
+      if(this.offerData!=null && this.offerData.length>0){
+        this.showOffers=true;
+      }
+    });
+  }
+  
 
   productHome(id) {
     this.router.navigate(['product/'+id]);

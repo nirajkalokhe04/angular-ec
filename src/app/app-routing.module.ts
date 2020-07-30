@@ -20,11 +20,11 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'products/meneye',
+    path: 'products/fruits',
     component: ProductsComponent
   },
   {
-    path: 'products/womeneye',
+    path: 'products/vegetables',
     component: ProductsComponent
   },
   {

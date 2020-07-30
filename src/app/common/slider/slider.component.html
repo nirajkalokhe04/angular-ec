@@ -5,3 +5,81 @@
     </div>
   </div>
 </owl-carousel>
+<img src="../../../assets/images/bottom-img-1.png" class="w-100 mt-5" alt="">
+
+<div class="container-fluid bg-color">
+  <div class="container">
+    <div>
+      <div class="title text-left pt-5 pb-5">
+        <h2 class="text-uppercase"><i class="fa fa-leaf text-success" aria-hidden="true"></i> Our Products</h2>
+      </div>
+    </div>
+    <owl-carousel [options]="carouselOptions1" [items]="images" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+      <div class="item m-0 our-product" *ngFor="let prodImage of productImages;let i = index">
+        <div class="text-center thumbnail-image bg-light border rounded-lg m-1">
+          <img [src]="prodImage.image" height="200" width="200" />
+          <p>{{prodImage.text}}</p>
+        </div>
+      </div>
+    </owl-carousel>
+  </div>
+  <div class="container">
+    <div>
+      <div class="title text-left mt-5 mb-5">
+        <h2 class="text-uppercase"><i class="fa fa-shopping-cart text-success" aria-hidden="true"></i> Vegetables</h2>
+      </div>
+    </div>
+    <owl-carousel [options]="carouselOptions2" [items]="images" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+      <div class="item m-0 product-slider" *ngFor="let vegData of vegetableData;let i = index">
+        <div class="text-left p-2 thumbnail-image bg-light border rounded-lg m-1">
+          <img src="https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-3.jpg" height="200" maxwidth="200" />
+          <h6>{{vegData.itemName}}</h6>
+          <p class="m-0">Type: {{vegData.subCategory.category.categoryName}}</p>
+          <p class="m-0">Kg: {{vegData.isAvailable}}</p>
+          <p class="m-0">MRP : <del>Rs{{vegData.regularPrice}}</del> <span class="price-css text-success"> Rs
+              {{vegData.salePrice}}</span></p>
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Qty</span>
+            </div>
+            <input type="number" min="1" max="10" class="form-control" aria-label="Small"
+              aria-describedby="inputGroup-sizing-sm">
+            <button type="button" class="btn btn-sm btn-success">Add <i class="fa fa-shopping-basket"
+                aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </owl-carousel>
+  </div>
+  <div>
+    <div class="container">
+      <div class="title text-left mt-5 mb-5">
+        <h2 class="text-uppercase"><i class="fa fa-shopping-cart text-success" aria-hidden="true"></i> Fruits</h2>
+      </div>
+   
+    <owl-carousel [options]="carouselOptions3" [items]="images" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+      <div class="item m-0 product-slider" *ngFor="let fruitData of fruitDatas;let i = index">
+        <div class="text-left p-2 thumbnail-image bg-light border rounded-lg m-1">
+        <div  (click)='productHome(fruitData.id)'>
+          <img [src]="fruitData.image" height="200" width="200" />
+          <h6>{{fruitData.itemName}}</h6>
+          <p class="m-0">Type: {{fruitData.subCategory.category.categoryName}}</p>
+          <p class="m-0">Kg: {{fruitData.isAvailable}}</p>
+          <p class="m-0">MRP : <del>Rs{{fruitData.regularPrice}}</del> <span class="price-css text-success"> Rs
+              {{fruitData.salePrice}}</span></p>
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Qty</span>
+            </div>
+          </div>
+            <input type="number" min="1" max="10" class="form-control" aria-label="Small"
+              aria-describedby="inputGroup-sizing-sm">
+            <button type="button" class="btn btn-sm btn-success">Add <i class="fa fa-shopping-basket"
+                aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </owl-carousel>
+  </div>
+  </div>
+</div>

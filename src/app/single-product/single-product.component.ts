@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from '../services/product.service';
-import { Route } from '@angular/compiler/src/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-single-product',
@@ -28,13 +27,14 @@ export class SingleProductComponent implements OnInit {
   imgFileName:string; 
   imageIndex: number;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private router: Router,private route: ActivatedRoute) {
     this.productService.getSimillarProducts().subscribe(res => {
       this.simillarProducts = res;
     });
-    this.productService.getSingleProduct(1).subscribe(res => {
+  
+    this.productService.getSingleProduct(this.route.snapshot.paramMap.get('id')).subscribe(res => {
       this.product = res;
-      this.imgFileName = this.product.image[0];
+      this.imgFileName = '';
       this.imageIndex = 0;
     });
   }
@@ -50,7 +50,8 @@ export class SingleProductComponent implements OnInit {
     this.imgFileName = this.product.image[index];
   }
   ngOnInit() {
-
+// alert(this.route.snapshot.paramMap.get('id'));
+ 
   }
 
   messages = [
@@ -84,5 +85,11 @@ export class SingleProductComponent implements OnInit {
     { value: 'tacos-2', viewValue: 'Large' }
   ];
 
+  productHome(id) {
+    this.router.navigate(['product/'+id]);
+    }
 
+    addToCart(product){
+      localStorage.setItem('clickCounter', product);
+    }
 }
