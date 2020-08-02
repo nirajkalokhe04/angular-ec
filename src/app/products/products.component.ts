@@ -42,14 +42,132 @@ productArr = [
   { 'id': 'JP230909', 'price': 240, 'image': 'https://cdn.shopify.com/s/files/1/1276/5299/products/6_e789f398-9b2b-4ab6-80e5-4ea85627a540_480x.jpg?v=1515079379'},
   { 'id': 'JP245541', 'price': 165, 'image': 'https://cdn.shopify.com/s/files/1/1276/5299/products/1_eb74f337-dc7b-4b04-ba8f-2bb40437ce09_480x.JPG?v=1568795292'},
 ];
-  products: [];
+  items: [];
   default = new Array(6);
+
+  vegetableData = [
+    {
+      "id": "402881f2738fa59001738fa7faaf0000",
+      "itemName": "Corinder",
+      "image": "https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-3.jpg",
+      "itemDescription": null,
+      "regularPrice": 15.0,
+      "salePrice": 0.0,
+      "isAvailable": null,
+      "isTaxable": null,
+      "subCategory": {
+        "id": "402881f2738f9c6e01738f9e915a0001",
+        "subcategotryName": "Leafy",
+        "subcategoryDescription": "Leafy",
+        "isActive": null,
+        "category": {
+          "id": "402881f2738f9c6e01738f9dc6730000",
+          "categoryName": "Vegitable",
+          "categoryDescription": "All Types of Vegitables",
+          "isActive": true
+        }
+      }
+    },
+    {
+      "id": "402881f2738fa59001738fa879d70001",
+      "itemName": "Lemon",
+      "image": "https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-6.jpg",
+      "itemDescription": null,
+      "regularPrice": 15.0,
+      "salePrice": 0.0,
+      "isAvailable": null,
+      "isTaxable": null,
+      "subCategory": {
+        "id": "402881f2738f9c6e01738f9e915a0001",
+        "subcategotryName": "Leafy",
+        "subcategoryDescription": "Leafy",
+        "isActive": null,
+        "category": {
+          "id": "402881f2738f9c6e01738f9dc6730000",
+          "categoryName": "Vegitable",
+          "categoryDescription": "All Types of Vegitables",
+          "isActive": true
+        }
+      }
+    },
+    {
+      "id": "402881f2738fa59001738fa93a400002",
+      "itemName": "Garlic",
+      "image": "https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-7.jpg",
+      "itemDescription": null,
+      "regularPrice": 25.0,
+      "salePrice": 0.0,
+      "isAvailable": null,
+      "isTaxable": null,
+      "subCategory": {
+        "id": "402881f2738f9c6e01738f9f24680003",
+        "subcategotryName": "Root",
+        "subcategoryDescription": "Root",
+        "isActive": null,
+        "category": {
+          "id": "402881f2738f9c6e01738f9dc6730000",
+          "categoryName": "Vegitable",
+          "categoryDescription": "All Types of Vegitables",
+          "isActive": true
+        }
+      }
+    },
+    {
+      "id": "402881f2738fa59001738fa93a400002",
+      "itemName": "Garlic",
+      "image": "https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-7.jpg",
+      "itemDescription": null,
+      "regularPrice": 25.0,
+      "salePrice": 0.0,
+      "isAvailable": null,
+      "isTaxable": null,
+      "subCategory": {
+        "id": "402881f2738f9c6e01738f9f24680003",
+        "subcategotryName": "Root",
+        "subcategoryDescription": "Root",
+        "isActive": null,
+        "category": {
+          "id": "402881f2738f9c6e01738f9dc6730000",
+          "categoryName": "Vegitable",
+          "categoryDescription": "All Types of Vegitables",
+          "isActive": true
+        }
+      }
+    },
+    {
+      "id": "402881f2738fa59001738fa971690003",
+      "itemName": "Tomato",
+      "image": "https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-8.jpg",
+      "itemDescription": null,
+      "regularPrice": 29.0,
+      "salePrice": 0.0,
+      "isAvailable": null,
+      "isTaxable": null,
+      "subCategory": {
+        "id": "402881f2738f9c6e01738f9ef7bd0002",
+        "subcategotryName": "Fruit",
+        "subcategoryDescription": "Fruit",
+        "isActive": null,
+        "category": {
+          "id": "402881f2738f9c6e01738f9dc6730000",
+          "categoryName": "Vegitable",
+          "categoryDescription": "All Types of Vegitables",
+          "isActive": true
+        }
+      }
+    },
+     
+    ];
   
   constructor(private router: Router, private productService: ProductService) {
     this.dataSource.data = TREE_DATA;
-    this.productService.getAllProducts().subscribe(res => {
-      this.products = res;
-    });
+    // this.productService.getAllProducts().subscribe(res => {
+    //   this.products = res;
+    // });
+
+    // this.productService.getAllItems().subscribe(res => {
+    //   this.items = res;
+    // });
    }
 
   private _transformer = (node: FoodNode, level: number) => {
