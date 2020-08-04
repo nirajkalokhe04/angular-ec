@@ -1,4 +1,4 @@
-<div style="padding: 30px 0px;  background: rgb(224, 224, 223);">
+<!-- <div style="padding: 30px 0px;  background: rgb(224, 224, 223);">
         <div class="filter-box" style="display:flex">
                 <div class="first">EYEGLASSES-FOR-MEN-335 PRODUCTS</div>
                 <div class="advance-filter">
@@ -51,21 +51,72 @@
                     <button mat-button mat-raised-button class="apply-btn" (click)='showFilter = false'>APPLY</button>                                                                                                                                                                                                                                                                    
                 </div>
             </div>
-</div>
-<div style="display:flex;flex-wrap: wrap; background:white;justify-content: space-around;">
-    <div *ngFor="let product of productArr" class="onLoad">
+</div> -->
+<!-- <div style="display:flex;flex-wrap: wrap; background:white;justify-content: space-around;">
+    <div *ngFor="let product of vegetableData" class="onLoad">
         <div style="display:flex; flex-direction:column;justify-content: center;align-items: center; margin-bottom: 20px; cursor: pointer;">
                 <img [src]="product.image" width="400px" (click)="productHome(1)">
                 <ul style="list-style:none; display:flex; padding: 0px;">
                     <li class="color-item" style="background-color:black; border-color: black; box-shadow: none; margin-right: 10px;"></li>
                     <li class="color-item" style="background-color:grey; border-color: grey;  box-shadow: none"></li>
                 </ul>
-                <span style ="font-size: 16px;font-weight: bold; cursor: pointer" (click)="productHome(1)">{{product.id}}</span>
+                <span style ="font-size: 16px;font-weight: bold; cursor: pointer" (click)="productHome(product.id)">{{product.id}}</span>
                 <span style="font-size: 16px; color: skyblue; font-weight: bold;">${{product.price}}</span>
                 <span style="font-size: 14px; font-weight: 500;">With BLU Smartphone Lenses</span>
         </div>
     </div>
+</div> -->
+<div class="container">
+    <div class="row">
+        <!-- <div class="" *ngFor="let vegData of vegetableData;let i = index"> -->
+            <div class="col-md-3 mt-4" *ngFor="let vegData of vegetableData;let i = index" (click)="productHome(vegData.id)">
+                <div class="card">
+                    <img class="card-img-top" [src]="vegData.image" alt="Card image cap">
+                    <div class="card-body">
+                        <h6>{{vegData.itemName}}</h6>
+                        <p class="m-0">Type: {{vegData.subCategory.category.categoryName}}</p>
+                        <p class="m-0">Kg: {{vegData.isAvailable}}</p>
+                        <p class="m-0">MRP : <del>Rs{{vegData.regularPrice}}</del> <span class="price-css text-success"> Rs
+                            {{vegData.salePrice}}</span></p>
+                        <div class="input-group input-group-sm mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Qty</span>
+                          </div>
+                          <input type="number" min="1" max="10" class="form-control" aria-label="Small"
+                            aria-describedby="inputGroup-sizing-sm">
+                          <button type="button" class="btn btn-sm btn-success">Add <i class="fa fa-shopping-basket"
+                              aria-hidden="true"></i></button>
+                        </div>
+                    <!-- </div> -->
+                  </div>
+            </div>
+
+
+            <!-- <div class="col-md-12">
+                <div class="text-left p-2 thumbnail-image bg-light border rounded-lg m-1">
+                  <img [src]="vegData.image" height="200" width="200" />
+                  <h6>{{vegData.itemName}}</h6>
+                  <p class="m-0">Type: {{vegData.subCategory.category.categoryName}}</p>
+                  <p class="m-0">Kg: {{vegData.isAvailable}}</p>
+                  <p class="m-0">MRP : <del>Rs{{vegData.regularPrice}}</del> <span class="price-css text-success"> Rs
+                      {{vegData.salePrice}}</span></p>
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">Qty</span>
+                    </div>
+                    <input type="number" min="1" max="10" class="form-control" aria-label="Small"
+                      aria-describedby="inputGroup-sizing-sm">
+                    <button type="button" class="btn btn-sm btn-success">Add <i class="fa fa-shopping-basket"
+                        aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div> -->
+        </div>
+    </div>
 </div>
+
+
+
 <div *ngIf="hideViewMoreBtn" style="background: white;text-align: center; padding: 10px 0px;">
     <button mat-button mat-raised-button class="apply-btn" (click)=viewMore()>VIEW MORE</button> 
 </div>
@@ -153,7 +204,7 @@
     </div>
 </div> -->
 
-<div class="mobile" *ngFor="let item of products" (click)="productHome(item.id)">
+<!-- <div class="mobile" *ngFor="let item of products" (click)="productHome(item.id)">
     <div class="mobile-card-container">
         <div class="mobile-card-img">
             <owl-carousel [options]="carouselOptions" [items]="item.image"
@@ -177,4 +228,4 @@
         <button mat-button>SHARE
         </button>
     </div>
-</div>
+</div> -->
