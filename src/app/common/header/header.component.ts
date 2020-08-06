@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
 import { MdePopoverTrigger } from '@material-extended/mde';
+import { ProductService } from '../../services/product.service';
+import { ItemModal } from '../../modal/item-modal';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +21,7 @@ export class HeaderComponent implements OnInit {
   loadingEnable: boolean;
   sidenavEnable = false;
   user: User;
+  items     :   ItemModal[];
 
   
   @ViewChildren(MdePopoverTrigger) trigger: QueryList<MdePopoverTrigger>;
@@ -32,16 +35,24 @@ export class HeaderComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private router: Router, 
     public loginService: LoginService,
-    public loadingService: LoadingService) { }
+    public loadingService: LoadingService,private productService: ProductService) { 
+
+      this.productService.getAllItems().subscribe(res => {
+        this.items = res;
+        console.log("items header",this.items);
+      });
+    }
 
 
   ngOnInit() {
-    this.loginService.loggedIn.subscribe(next => {
-      this.user = next;
-    });
-    this.loadingService.progressEnable.subscribe(next => {
-      this.loadingEnable = next;
-    });
+    // this.loginService.loggedIn.subscribe(next => {
+    //   this.user = next;
+    // });
+    // this.loadingService.progressEnable.subscribe(next => {
+    //   this.loadingEnable = next;
+    // });
+
+   
   }
   quantity = [
     {value: '1', viewValue: '1'},

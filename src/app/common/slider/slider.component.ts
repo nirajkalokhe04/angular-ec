@@ -302,10 +302,10 @@ export class SliderComponent implements OnInit {
   items     :   ItemModal[];
 
   constructor(private homeService: HomeService, sanitizer: DomSanitizer, private router: Router, private productService: ProductService) { 
-    // this.productService.getAllItems().subscribe(res => {
-    //   this.items = res;
-    //   console.log("items",this.items)
-    // });
+    this.productService.getAllItems().subscribe(res => {
+      this.items = res;
+      console.log("items",this.items);
+    });
   }
 
   ngOnInit() {

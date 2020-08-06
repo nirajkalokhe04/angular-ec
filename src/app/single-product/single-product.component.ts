@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Route } from '@angular/compiler/src/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-single-product',
@@ -23,34 +23,93 @@ export class SingleProductComponent implements OnInit {
     
 }
   simillarProducts = [];
-  product: any;
+  // product: any;
   @Input() imgPath:string = "";
   imgFileName:string; 
   imageIndex: number;
+  public id: string;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  product= [
+    {
+        "id": 1,
+        "text": "JPE11774 UNISEX EYEGLASSES",
+        "image": [
+          "https://cdn.shopify.com/s/files/1/1276/5299/products/G_7060_1024x.jpg?v=1568894878",
+		  "https://cdn.shopify.com/s/files/1/1276/5299/products/G_7061_1024x.jpg?v=1568894878",
+		  "https://cdn.shopify.com/s/files/1/1276/5299/products/G_7062_1024x.jpg?v=1568894878",
+		  "https://cdn.shopify.com/s/files/1/1276/5299/products/G_7063_1024x.jpg?v=1568894878"
+        ]
+      },
+      {
+        "id": 2,
+        "text": "Festive Deer",
+        "image": [
+          "http://pngimg.com/uploads/sunglasses/sunglasses_PNG150.png",
+          "http://pngimg.com/uploads/sunglasses/sunglasses_PNG95.png"
+        ]
+      },
+      {
+        "id": 3,
+        "text": "Morning Greens",
+        "image": [
+          "https://i.pinimg.com/originals/9b/68/4b/9b684bfc5e4bd28ad4283038632bff6d.png"
+        ]
+      },
+      {
+        "id": 4,
+        "text": "Everfresh Flowers",
+        "image": [
+          "http://pngimg.com/uploads/sunglasses/sunglasses_PNG62.png"
+        ]
+      },
+      {
+        "id": 5,
+        "text": "Festive Deer",
+        "image": [
+          "https://i.pinimg.com/originals/c6/39/e2/c639e2ed36e9b26437194c4ac103673b.png"
+        ]
+      },
+      {
+        "id": 6,
+        "text": "Everfresh Flowers",
+        "image": [
+          "https://www.pngix.com/pngfile/middle/184-1849415_maui-jim-sunglasses-png-image-transparent-background-ray.png"
+        ]
+      },
+      {
+        "id": 7,
+        "text": "Everfresh Flowers",
+        "image": [
+          "https://i.pinimg.com/originals/9b/68/4b/9b684bfc5e4bd28ad4283038632bff6d.png",
+          "http://pngimg.com/uploads/sunglasses/sunglasses_PNG62.png"
+        ]
+      }
+ ];
+
+  constructor(private productService: ProductService, private route: ActivatedRoute,) {
     this.productService.getSimillarProducts().subscribe(res => {
       this.simillarProducts = res;
     });
-    this.productService.getSingleProduct(1).subscribe(res => {
-      this.product = res;
-      this.imgFileName = this.product.image[0];
-      this.imageIndex = 0;
-    });
+    // this.productService.getSingleProduct(1).subscribe(res => {
+    //   this.product = res;
+    //   this.imgFileName = this.product.image[0];
+    //   this.imageIndex = 0;
+    // });
   }
-  prevBtnClick(){
-    this.imageIndex = this.imageIndex -1;
-    this.imgFileName =  this.product.image[this.imageIndex];
-  }
-  nextBtnClick(){
-    this.imageIndex =  this.imageIndex +1;
-    this.imgFileName =  this.product.image[this.imageIndex];
-  }
-  onImageClick(index:number){
-    this.imgFileName = this.product.image[index];
-  }
+  // prevBtnClick(){
+  //   this.imageIndex = this.imageIndex -1;
+  //   this.imgFileName =  this.product.image[this.imageIndex];
+  // }
+  // nextBtnClick(){
+  //   this.imageIndex =  this.imageIndex +1;
+  //   this.imgFileName =  this.product.image[this.imageIndex];
+  // }
+  // onImageClick(index:number){
+  //   this.imgFileName = this.product.image[index];
+  // }
   ngOnInit() {
-
+    this.id = this.route.snapshot.paramMap.get('id');
+    console.log("id"+this.id);
   }
 
   messages = [
