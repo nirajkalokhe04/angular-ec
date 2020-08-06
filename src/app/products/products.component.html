@@ -55,7 +55,7 @@
 <!-- <div style="display:flex;flex-wrap: wrap; background:white;justify-content: space-around;">
     <div *ngFor="let product of vegetableData" class="onLoad">
         <div style="display:flex; flex-direction:column;justify-content: center;align-items: center; margin-bottom: 20px; cursor: pointer;">
-                <img [src]="image.image" width="400px" (click)="productHome(product.id)">
+                <img [src]="product.image" width="400px" (click)="productHome(1)">
                 <ul style="list-style:none; display:flex; padding: 0px;">
                     <li class="color-item" style="background-color:black; border-color: black; box-shadow: none; margin-right: 10px;"></li>
                     <li class="color-item" style="background-color:grey; border-color: grey;  box-shadow: none"></li>
@@ -121,7 +121,7 @@
     <button mat-button mat-raised-button class="apply-btn" (click)=viewMore()>VIEW MORE</button> 
 </div>
 <div *ngIf="viewMoreClicked" style="display:flex;flex-wrap: wrap; background:white;justify-content: space-around;">
-        <div *ngFor="let image of images" class="onLoad">
+        <div *ngFor="let image of productArr" class="onLoad">
             <div style="display:flex; flex-direction:column;justify-content: center;align-items: center;">
                     <img [src]="image.image" width="400px">
                     <ul style="list-style:none; display:flex; padding: 0px;">

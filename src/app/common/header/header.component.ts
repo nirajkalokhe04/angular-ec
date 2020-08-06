@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
   sidenavEnable = false;
   user: User;
   items     :   ItemModal[];
-
   
   @ViewChildren(MdePopoverTrigger) trigger: QueryList<MdePopoverTrigger>;
 
@@ -53,6 +52,14 @@ export class HeaderComponent implements OnInit {
     // });
 
    
+  }
+
+  getcategories(){
+    
+    this.commonservice.getAllCategpries().subscribe(res => {
+      this.vegetableData = res;
+      // console.log("items", this.vegetableData)
+    });
   }
   quantity = [
     {value: '1', viewValue: '1'},

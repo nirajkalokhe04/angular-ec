@@ -28,7 +28,13 @@ export class HomeComponent implements OnInit {
 
 images    :   [];
 items     :   ItemModal[];
+showOffers  : Boolean   =   false;
+offerData   :   [];
 default = new Array(4);
+item      :{
+  name  : 'string',
+  id    :   'string'
+}
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private productService: ProductService) {
   
@@ -45,7 +51,18 @@ default = new Array(4);
   }
 
   ngOnInit() {
+    this.getoffers();
   }
+
+  getoffers(){
+    this.productService.getdashboardoffers().subscribe(res => {
+      this.offerData = res;
+      if(this.offerData!=null && this.offerData.length>0){
+        this.showOffers=true;
+      }
+    });
+  }
+  
 
   productHome(id) {
     this.router.navigate(['product/'+id]);

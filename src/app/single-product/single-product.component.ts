@@ -29,6 +29,7 @@ export class SingleProductComponent implements OnInit {
   imageIndex: number;
   public id: string;
 
+<<<<<<< .mine
   product= [
     {
         "id": 1,
@@ -87,14 +88,84 @@ export class SingleProductComponent implements OnInit {
  ];
 
   constructor(private productService: ProductService, private route: ActivatedRoute,) {
+=======
+  constructor(private productService: ProductService, private router: Router,private route: ActivatedRoute) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
     this.productService.getSimillarProducts().subscribe(res => {
       this.simillarProducts = res;
     });
+<<<<<<< .mine
     // this.productService.getSingleProduct(1).subscribe(res => {
     //   this.product = res;
     //   this.imgFileName = this.product.image[0];
     //   this.imageIndex = 0;
     // });
+
+=======
+  
+    this.productService.getSingleProduct(this.route.snapshot.paramMap.get('id')).subscribe(res => {
+      this.product = res;
+      this.imgFileName = '';
+      this.imageIndex = 0;
+    });
+>>>>>>> .theirs
   }
   // prevBtnClick(){
   //   this.imageIndex = this.imageIndex -1;
@@ -108,8 +179,13 @@ export class SingleProductComponent implements OnInit {
   //   this.imgFileName = this.product.image[index];
   // }
   ngOnInit() {
+<<<<<<< .mine
     this.id = this.route.snapshot.paramMap.get('id');
     console.log("id"+this.id);
+=======
+// alert(this.route.snapshot.paramMap.get('id'));
+ 
+>>>>>>> .theirs
   }
 
   messages = [
@@ -143,5 +219,11 @@ export class SingleProductComponent implements OnInit {
     { value: 'tacos-2', viewValue: 'Large' }
   ];
 
+  productHome(id) {
+    this.router.navigate(['product/'+id]);
+    }
 
+    addToCart(product){
+      localStorage.setItem('clickCounter', product);
+    }
 }

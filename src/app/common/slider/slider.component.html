@@ -32,7 +32,7 @@
     <owl-carousel [options]="carouselOptions2" [items]="images" [carouselClasses]="['owl-theme', 'row', 'sliding']">
       <div class="item m-0 product-slider" *ngFor="let vegData of vegetableData;let i = index">
         <div class="text-left p-2 thumbnail-image bg-light border rounded-lg m-1">
-          <img [src]="vegData.image" height="200" width="200" />
+          <img src="https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-3.jpg" height="200" maxwidth="200" />
           <h6>{{vegData.itemName}}</h6>
           <p class="m-0">Type: {{vegData.subCategory.category.categoryName}}</p>
           <p class="m-0">Kg: {{vegData.isAvailable}}</p>
@@ -60,6 +60,7 @@
     <owl-carousel [options]="carouselOptions3" [items]="images" [carouselClasses]="['owl-theme', 'row', 'sliding']">
       <div class="item m-0 product-slider" *ngFor="let fruitData of fruitDatas;let i = index">
         <div class="text-left p-2 thumbnail-image bg-light border rounded-lg m-1">
+        <div  (click)='productHome(fruitData.id)'>
           <img [src]="fruitData.image" height="200" width="200" />
           <h6>{{fruitData.itemName}}</h6>
           <p class="m-0">Type: {{fruitData.subCategory.category.categoryName}}</p>
@@ -70,6 +71,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-sm">Qty</span>
             </div>
+          </div>
             <input type="number" min="1" max="10" class="form-control" aria-label="Small"
               aria-describedby="inputGroup-sizing-sm">
             <button type="button" class="btn btn-sm btn-success">Add <i class="fa fa-shopping-basket"
