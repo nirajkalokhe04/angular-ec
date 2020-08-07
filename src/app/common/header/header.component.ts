@@ -10,6 +10,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 import { MdePopoverTrigger } from '@material-extended/mde';
 import { ProductService } from '../../services/product.service';
 import { ItemModal } from '../../modal/item-modal';
+import { CommonService } from '../../services/common-service';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit {
   sidenavEnable = false;
   user: User;
   items     :   ItemModal[];
+  vegetableData:any;
   
   @ViewChildren(MdePopoverTrigger) trigger: QueryList<MdePopoverTrigger>;
 
@@ -34,7 +36,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private router: Router, 
     public loginService: LoginService,
-    public loadingService: LoadingService,private productService: ProductService) { 
+    public loadingService: LoadingService,private productService: ProductService, private commonService : CommonService) { 
 
       this.productService.getAllItems().subscribe(res => {
         this.items = res;
@@ -56,7 +58,7 @@ export class HeaderComponent implements OnInit {
 
   getcategories(){
     
-    this.commonservice.getAllCategpries().subscribe(res => {
+    this.commonService.getAllCategpries().subscribe(res => {
       this.vegetableData = res;
       // console.log("items", this.vegetableData)
     });

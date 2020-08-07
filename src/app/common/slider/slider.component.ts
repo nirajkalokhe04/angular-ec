@@ -14,117 +14,113 @@ import { ItemModal } from '../../modal/item-modal';
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
-  carouselOptions =
-    {
-      animateOut: 'bounceOutRight',
-      animateIn: 'bounceInLeft',
-      items: 1,
-      dots: false,
-      navigation: false,
-      loop: true,
-      margin: 0,
-      autoplay: true,
-      //  animateOut: 'fadeOut',
-      autoHeight: true,
-      autoHeightClass: 'owl-height',
 
-    }
-  carouselOptions1 =
+ 
+  slideVeg = {
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    responsive: [
     {
-      animateOut: 'bounceOutRight',
-      animateIn: 'bounceInLeft',
-      nav: true,
-      navText: ["<div class='nav-btn prev-slide'></div>", "<div class='nav-btn next-slide'></div>"],
-      items: 4,
-      dots: true,
-      navigation: true,
-      loop: true,
-      margin: 0,
-      autoplay: true,
-      //  animateOut: 'fadeOut',
-      autoHeight: true,
-      autoHeightClass: 'owl-height',
-      responsive: {
-        0: {
-          items: 1,
-          nav: true
-        },
-        600: {
-          items: 3,
-          nav: true
-        },
-        1000: {
-          items: 4,
-          nav: true,
-          loop: true
-        }
-      }
-
+    breakpoint: 768,
+    settings: {
+    slidesToShow: 2
     }
-  carouselOptions2 =
+    },
     {
-      animateOut: 'bounceOutRight',
-      animateIn: 'bounceInLeft',
-      nav: true,
-      navText: ["<div class='nav-btn prev-slide'></div>", "<div class='nav-btn next-slide'></div>"],
-      items: 5,
-      dots: true,
-      navigation: true,
-      loop: true,
-      margin: 0,
-      autoplay: true,
-      //  animateOut: 'fadeOut',
-      autoHeight: true,
-      autoHeightClass: 'owl-height',
-      responsive: {
-        0: {
-          items: 1,
-          nav: true
-        },
-        600: {
-          items: 3,
-          nav: true
-        },
-        1000: {
-          items: 5,
-          nav: true,
-          loop: true
-        }
-      }
-
+    breakpoint: 600,
+    settings: {
+    slidesToShow: 1
     }
-  carouselOptions3 =
+    }
+    ]
+  };
+  slideFruit = {
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    responsive: [
     {
-      animateOut: 'bounceOutRight',
-      animateIn: 'bounceInLeft',
-      nav: true,
-      navText: ["<div class='nav-btn prev-slide'></div>", "<div class='nav-btn next-slide'></div>"],
-      items: 5,
-      dots: true,
-      navigation: true,
-      loop: true,
-      margin: 0,
-      autoplay: true,
-      //  animateOut: 'fadeOut',
-      autoHeight: true,
-      autoHeightClass: 'owl-height',
-      responsive: {
-        0: {
-          items: 1,
-          nav: true
-        },
-        600: {
-          items: 3,
-          nav: true
-        },
-        1000: {
-          items: 5,
-          nav: true,
-          loop: true
-        }
-      }
-
+    breakpoint: 768,
+    settings: {
+    slidesToShow: 2
     }
+    },
+    {
+    breakpoint: 600,
+    settings: {
+    slidesToShow: 1
+    }
+    }
+    ]
+  };
+  slideProduct = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+    {
+    breakpoint: 768,
+    settings: {
+    slidesToShow: 2
+    }
+    },
+    {
+    breakpoint: 600,
+    settings: {
+    slidesToShow: 1
+    }
+    }
+    ]
+  };
+  bigSlider = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    responsive: [
+    {
+    breakpoint: 768,
+    settings: {
+    slidesToShow: 1
+    }
+    },
+    {
+    breakpoint: 600,
+    settings: {
+    slidesToShow: 1
+    }
+    },
+    {
+    breakpoint: 400,
+    settings: {
+    slidesToShow: 1
+    }
+    }
+    ]
+  };
+  
+  addSlide() {
+    // this.slides.push({img: "http://placehold.it/350x150/777777"})
+  }
+  
+  removeSlide() {
+    // this.slides.length = this.slides.length - 1;
+  }
+  
+  slickInit(e) {
+    console.log('slick initialized');
+  }
+  
+  breakpoint(e) {
+    console.log('breakpoint');
+  }
+  
+  afterChange(e) {
+    console.log('afterChange');
+  }
+  
+  beforeChange(e) {
+    console.log('beforeChange');
+  }
+
+
+    
 
 
   images = [
@@ -160,150 +156,8 @@ export class SliderComponent implements OnInit {
 
   ];
 
-  // vegetableData = [
-  //   {
-  //     "id": "402881f2738fa59001738fa7faaf0000",
-  //     "itemName": "Corinder",
-  //     "image": "https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-3.jpg",
-  //     "itemDescription": null,
-  //     "regularPrice": 15.0,
-  //     "salePrice": 0.0,
-  //     "isAvailable": null,
-  //     "isTaxable": null,
-  //     "subCategory": {
-  //       "id": "402881f2738f9c6e01738f9e915a0001",
-  //       "subcategotryName": "Leafy",
-  //       "subcategoryDescription": "Leafy",
-  //       "isActive": null,
-  //       "category": {
-  //         "id": "402881f2738f9c6e01738f9dc6730000",
-  //         "categoryName": "Vegitable",
-  //         "categoryDescription": "All Types of Vegitables",
-  //         "isActive": true
-  //       }
-  //     }
-  //   },
-  //   {
-  //     "id": "402881f2738fa59001738fa879d70001",
-  //     "itemName": "Lemon",
-  //     "image": "https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-6.jpg",
-  //     "itemDescription": null,
-  //     "regularPrice": 15.0,
-  //     "salePrice": 0.0,
-  //     "isAvailable": null,
-  //     "isTaxable": null,
-  //     "subCategory": {
-  //       "id": "402881f2738f9c6e01738f9e915a0001",
-  //       "subcategotryName": "Leafy",
-  //       "subcategoryDescription": "Leafy",
-  //       "isActive": null,
-  //       "category": {
-  //         "id": "402881f2738f9c6e01738f9dc6730000",
-  //         "categoryName": "Vegitable",
-  //         "categoryDescription": "All Types of Vegitables",
-  //         "isActive": true
-  //       }
-  //     }
-  //   },
-  //   {
-  //     "id": "402881f2738fa59001738fa93a400002",
-  //     "itemName": "Garlic",
-  //     "image": "https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-7.jpg",
-  //     "itemDescription": null,
-  //     "regularPrice": 25.0,
-  //     "salePrice": 0.0,
-  //     "isAvailable": null,
-  //     "isTaxable": null,
-  //     "subCategory": {
-  //       "id": "402881f2738f9c6e01738f9f24680003",
-  //       "subcategotryName": "Root",
-  //       "subcategoryDescription": "Root",
-  //       "isActive": null,
-  //       "category": {
-  //         "id": "402881f2738f9c6e01738f9dc6730000",
-  //         "categoryName": "Vegitable",
-  //         "categoryDescription": "All Types of Vegitables",
-  //         "isActive": true
-  //       }
-  //     }
-  //   },
-  //   {
-  //     "id": "402881f2738fa59001738fa93a400002",
-  //     "itemName": "Garlic",
-  //     "image": "https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-7.jpg",
-  //     "itemDescription": null,
-  //     "regularPrice": 25.0,
-  //     "salePrice": 0.0,
-  //     "isAvailable": null,
-  //     "isTaxable": null,
-  //     "subCategory": {
-  //       "id": "402881f2738f9c6e01738f9f24680003",
-  //       "subcategotryName": "Root",
-  //       "subcategoryDescription": "Root",
-  //       "isActive": null,
-  //       "category": {
-  //         "id": "402881f2738f9c6e01738f9dc6730000",
-  //         "categoryName": "Vegitable",
-  //         "categoryDescription": "All Types of Vegitables",
-  //         "isActive": true
-  //       }
-  //     }
-  //   },
-  //   {
-  //     "id": "402881f2738fa59001738fa971690003",
-  //     "itemName": "Tomato",
-  //     "image": "https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-8.jpg",
-  //     "itemDescription": null,
-  //     "regularPrice": 29.0,
-  //     "salePrice": 0.0,
-  //     "isAvailable": null,
-  //     "isTaxable": null,
-  //     "subCategory": {
-  //       "id": "402881f2738f9c6e01738f9ef7bd0002",
-  //       "subcategotryName": "Fruit",
-  //       "subcategoryDescription": "Fruit",
-  //       "isActive": null,
-  //       "category": {
-  //         "id": "402881f2738f9c6e01738f9dc6730000",
-  //         "categoryName": "Vegitable",
-  //         "categoryDescription": "All Types of Vegitables",
-  //         "isActive": true
-  //       }
-  //     }
-  //   },
-
-  // ];
-
-
-  vegetableData = [];
-
+  vegetableData = [] ;
   fruitDatas = [];
-
-  // fruitDatas = [
-  //   {
-  //     "id": "402881f2738fa59001738fa7faaf0000",
-  //     "itemName": "Apple",
-  //     "image": "https://demo.hasthemes.com/young-preview/young/assets/images/product/organic-pro-4.jpg",
-  //     "itemDescription": null,
-  //     "regularPrice": 15.0,
-  //     "salePrice": 0.0,
-  //     "isAvailable": null,
-  //     "isTaxable": null,
-  //     "subCategory": {
-  //       "id": "402881f2738f9c6e01738f9e915a0001",
-  //       "subcategotryName": "Leafy",
-  //       "subcategoryDescription": "Leafy",
-  //       "isActive": null,
-  //       "category": {
-  //         "id": "402881f2738f9c6e01738f9dc6730000",
-  //         "categoryName": "Vegitable",
-  //         "categoryDescription": "All Types of Vegitables",
-  //         "isActive": true
-  //       }
-  //     }
-  //   },
-  // ];
-
 
   items: ItemModal[];
 
@@ -315,7 +169,7 @@ export class SliderComponent implements OnInit {
 
     this.productService.getdashboardvegetables().subscribe(res => {
       this.vegetableData = res;
-      // console.log("items", this.vegetableData)
+      console.log("items veg", this.vegetableData);
     });
 
     this.productService.getdashboardfruits().subscribe(res => {

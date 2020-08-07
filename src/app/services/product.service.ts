@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   getAllItems(): Observable<any> {
-    return this.httpClient.get(environment.baseURL+"/item");
+    return this.httpClient.get(environment.baseURL+"item");
     
   }
 

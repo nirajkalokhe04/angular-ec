@@ -24,7 +24,11 @@
 }
 .menu{
     display: flex;
-    clear:both;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }
 .list{
     list-style: none; 

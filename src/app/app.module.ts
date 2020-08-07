@@ -11,6 +11,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MdePopoverModule } from '@material-extended/mde';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import {
   MatAutocompleteModule,
@@ -61,6 +62,7 @@ import { WishlistComponent } from './myprofile/wishlist/wishlist.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxSkltnModule, SkltnConfig } from 'ngx-skltn';
 import { SignupComponent } from './common/signup/signup.component';
+
 const skltnConfig: SkltnConfig = {
   rectRadius: 10,
   flareWidth: '150px',
@@ -127,6 +129,7 @@ const skltnConfig: SkltnConfig = {
      MatTooltipModule,
      MatNativeDateModule,
      OwlModule,
+     SlickCarouselModule,
      MatTreeModule,
      ReactiveFormsModule,
      NgImageSliderModule,
