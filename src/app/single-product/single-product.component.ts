@@ -28,6 +28,7 @@ export class SingleProductComponent implements OnInit {
   imgFileName:string; 
   imageIndex: number;
   public id: string;
+  productData:any;
 
   product= [
     {
@@ -99,6 +100,7 @@ export class SingleProductComponent implements OnInit {
   
     this.productService.getSingleProduct(this.route.snapshot.paramMap.get('id')).subscribe(res => {
       this.product = res;
+      console.log("product"+this.product);
       this.imgFileName = '';
       this.imageIndex = 0;
     });

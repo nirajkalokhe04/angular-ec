@@ -99,7 +99,7 @@
         <div class="bg-light h-100 w-100 p-4 rounded menu">
             <div class="row">
                 <div class="col-md-6">
-                    <h5> Fresh Vegetables</h5>
+                    <h6> Fresh Vegetables</h6>
                     <div class="ml-2" *ngFor="let item of items">
                     <p *ngIf="item.subCategory.category.categoryName === 'Vegitable'" [routerLink]="['/products/vegetables']">{{item.itemName}}</p>
                     </div>
