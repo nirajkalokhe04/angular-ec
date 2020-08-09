@@ -13,7 +13,7 @@ import { SignupComponent } from '../common/signup/signup.component';
 export class LoginComponent implements OnInit {
   user = {} as User;
   loginForm = new FormGroup({
-    email: new FormControl(''),
+    mobile: new FormControl(''),
     password: new FormControl('')
   });
   constructor(public dialogRef: MatDialogRef<LoginComponent>, private router: Router, public dialog: MatDialog,
@@ -23,9 +23,15 @@ export class LoginComponent implements OnInit {
    
   }
   login(){
-    this.user.mobileNumber = "9039907701";
-    this.loginService.loggedIn.next(this.user);
-    this.onNoClick();
+    let loginData = "{mobile:'" + this.loginForm.controls['mobile'].value + "', password:'"+ this.loginForm.controls['password'].value +"'}";
+    this.loginService.loginCustomer(loginData).subscribe((userObj: any)=>{
+      this.user.mobileNumber = userObj.mobile;
+      this.user.userId = userObj.id;
+      this.loginService.loggedIn.next(this.user);
+      this.onNoClick();
+    }, err=>{
+      console.log("Username or password is wrong. Please try again.");
+    });
   }
   onSignUpClick(){
     this.dialogRef.close();
