@@ -350,4 +350,14 @@ input::-webkit-input-placeholder {
     .hide-on-mobile{
         display: none;
     }
+    .mobile-view {
+        display: block;
+    }
+}
+.mob-icon{
+    font-size: 36px;
+    position: absolute;
+    top: 36px;
+    left: 28px;
+    z-index: 1;
 }

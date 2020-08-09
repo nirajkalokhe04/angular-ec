@@ -22,19 +22,30 @@
                 <table>
                         <tr>
                                 <td>
-                                        <mat-icon>home</mat-icon>
+                                        <i class="fa fa-home" aria-hidden="true"></i>
                                 </td>
                                 <td style="vertical-align: baseline;"><span style="margin-left: 10px;">HOME</span></td>
                         </tr>
                 </table>
         </li>
-        <li class="contain" (click)="toggelSidenav()" [routerLink]="['/products']" routerLinkActive="active">
+        <li class="contain" (click)="toggelSidenav()" [routerLink]="['/products/vegetables']" routerLinkActive="active">
                 <table>
                         <tr>
                                 <td>
-                                        <mat-icon>add_to_photos</mat-icon>
+                                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                                 </td>
-                                <td style="vertical-align: baseline;"> <span style="margin-left: 10px;">PRODUCTS</span>
+                                <td style="vertical-align: baseline;"> <span style="margin-left: 10px;">Vegetable</span>
+                                </td>
+                        </tr>
+                </table>
+        </li>
+        <li class="contain" (click)="toggelSidenav()" [routerLink]="['/products/vegetables']" routerLinkActive="active">
+                <table>
+                        <tr>
+                                <td>
+                                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                                </td>
+                                <td style="vertical-align: baseline;"> <span style="margin-left: 10px;">Fruits</span>
                                 </td>
                         </tr>
                 </table>

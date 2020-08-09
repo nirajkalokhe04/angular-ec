@@ -7,11 +7,11 @@
 <mat-progress-bar mode="indeterminate" *ngIf="loadingEnable"></mat-progress-bar>
 <div class="header-box">
     <div class="container">
-        <div class="mobile-view">
-            <mat-icon fontSet="material-icons-outlined" (click)="toggelSidenav()">menu</mat-icon>
-        </div>
         <div class="row">
-            <div class="col-md-2">
+            <div class="mobile-view col-xs-6">
+                <mat-icon fontSet="material-icons-outlined" class="mob-icon" (click)="toggelSidenav()">menu</mat-icon>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
                 <div class="logo">
                     <a [routerLink]="['/home']" style="width: 90px;">
                         <img src="../../../assets/images/logo-vegetable.png"
@@ -19,6 +19,7 @@
                     </a>
                 </div>
             </div>
+            
             <div class="col-md-7 pt-4 pl-4">
                 <div class="menu hide-on-mobile">
                     <ul class="list">
@@ -43,7 +44,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-12 pt-4 pl-4">
+            <div class="col-md-3 col-sm-12 pt-4 pl-4 hide-on-mobile">
 
                     <div class="row">
                         <div class="col-md-6 w-auto contain text-center" *ngIf="!user" (click)="openLoginDialog()">
