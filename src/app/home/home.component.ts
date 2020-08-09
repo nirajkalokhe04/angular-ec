@@ -26,15 +26,15 @@ export class HomeComponent implements OnInit {
     
 // }
 
-images    :   [];
-items     :   ItemModal[];
-showOffers  : Boolean   =   false;
-offerData   :   [];
+images        :   [];
+items         :   ItemModal[];
+showOffers    : Boolean   =   false;
+offerData     :   [];
 default = new Array(4);
-item      :{
-  name  : 'string',
-  id    :   'string'
-}
+item          :{
+                  name  : 'string',
+                  id    :   'string'
+              }     
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private productService: ProductService) {
   

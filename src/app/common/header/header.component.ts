@@ -11,6 +11,8 @@ import { MdePopoverTrigger } from '@material-extended/mde';
 import { ProductService } from '../../services/product.service';
 import { ItemModal } from '../../modal/item-modal';
 import { CommonService } from '../../services/common-service';
+import { CartService } from 'src/app/services/cart.service';
+import { CartItem } from 'src/app/modal/cart-item-modal';
 
 @Component({
   selector: 'app-header',
@@ -23,8 +25,11 @@ export class HeaderComponent implements OnInit {
   sidenavEnable = false;
   user: User;
   items     :   ItemModal[];
-  vegetableData:any;
+  vegetableData:[];
   
+  totalAmount : number=0.00;
+  itemAmount  : number=0.00;
+  deliveryCharges:number;
   @ViewChildren(MdePopoverTrigger) trigger: QueryList<MdePopoverTrigger>;
 
   @Output()
@@ -36,8 +41,16 @@ export class HeaderComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private router: Router, 
     public loginService: LoginService,
-    public loadingService: LoadingService,private productService: ProductService, private commonService : CommonService) { 
-
+      private commonservice:CommonService,
+    private cartservice: CartService,
+    public loadingService: LoadingService
+    ,private productService: ProductService
+    
+    ) { 
+      if(this.user!=undefined&&this.user!=null){
+        this.loadCartItems(this.user.userId);
+      }
+      
       this.productService.getAllItems().subscribe(res => {
         this.items = res;
         console.log("items header",this.items);
@@ -58,7 +71,7 @@ export class HeaderComponent implements OnInit {
 
   getcategories(){
     
-    this.commonService.getAllCategpries().subscribe(res => {
+    this.commonservice.getAllCategpries().subscribe(res => {
       this.vegetableData = res;
       // console.log("items", this.vegetableData)
     });
@@ -66,9 +79,10 @@ export class HeaderComponent implements OnInit {
   quantity = [
     {value: '1', viewValue: '1'},
     {value: '2', viewValue: '2'},
-    {value: '3', viewValue: '3'}
+    {value: '3', viewValue: '3'},
+    {value: '4', viewValue: '4'}
   ];
-  cartItems = new Array(3);
+  cartItems = new Array();
 
   enableSidenav() {
     this.sidenavEnable = !this.sidenavEnable;
@@ -94,5 +108,46 @@ export class HeaderComponent implements OnInit {
     } else {
       this.trigger.toArray()[2].togglePopover();
     }
+  }
+  addCartQuantity(cartdetailsid, itemId,itemName,itemPrice,itemSize,userId){
+      let cartitem = new CartItem();
+      cartitem.cartDetailId=cartdetailsid;
+      cartitem.itemId=itemId;
+      cartitem.itemName=itemName;
+      cartitem.itemPrice=itemPrice;
+      cartitem.size=itemSize;
+      cartitem.quantity=1;
+      cartitem.userId=userId;
+      this.cartservice.addProductToCart(cartitem).subscribe(res=>{
+        console.log(res);
+        this.loadCartItems(cartitem.userId);
+      });
+  }
+  minusitemquantity(itemId,cartDetailId,itemPrice,userId){
+
+    let cartitem = new CartItem();
+    cartitem.quantity=-1;
+    cartitem.cartDetailId=cartDetailId;
+    cartitem.itemId=itemId;
+    cartitem.itemPrice=itemPrice;
+    cartitem.userId=userId;
+
+    this.cartservice.addProductToCart(cartitem).subscribe(res=>{
+      console.log(res);
+      this.loadCartItems(cartitem.userId);
+    });
+  }
+
+  loadCartItems(userId) {
+    this.cartservice.getCarts(userId).subscribe(res => {
+      this.cartItems = res;
+      for (var i = 0; i < res.length; i++) {
+        var element = res[i];
+        console.log(element.price);
+        // how to add each price and get a total 
+        this.totalAmount += parseFloat(element.totalPrice);
+
+    }
+    });
   }
 }

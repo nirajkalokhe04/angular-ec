@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Route } from '@angular/compiler/src/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { CartService } from '../services/cart.service';
+import { ItemModal } from '../modal/item-modal';
+// import { ShoppingCartComponent } from '../myprofile/shopping-cart/shopping-cart.component';
 
 @Component({
   selector: 'app-single-product',
@@ -87,7 +90,9 @@ export class SingleProductComponent implements OnInit {
       }
  ];
 
-  constructor(private productService: ProductService, private router: Router,private route: ActivatedRoute) {
+  constructor(private productService: ProductService
+    // ,private cartcomponent : ShoppingCartComponent
+    ,private cartservice :CartService, private router: Router,private route: ActivatedRoute) {
     this.productService.getSimillarProducts().subscribe(res => {
       this.simillarProducts = res;
     });
@@ -158,7 +163,8 @@ export class SingleProductComponent implements OnInit {
     this.router.navigate(['product/'+id]);
     }
 
-    addToCart(product){
-      localStorage.setItem('clickCounter', product);
+    addToCart(product : ItemModal){      
+      this.cartservice.addProductToCart(null);
+      // localStorage.setItem('clickCounter', product);
     }
 }

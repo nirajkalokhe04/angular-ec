@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { MatSidenav } from '@angular/material';
+import { ItemModal } from './modal/item-modal';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,6 @@ import { MatSidenav } from '@angular/material';
 export class AppComponent {
   @ViewChild('drawer', {static: false}) drawer: MatSidenav;
   title = 'e-comm';
-  
   toggelNavbar (obj) {
     this.drawer.toggle();
   }

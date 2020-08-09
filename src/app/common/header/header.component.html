@@ -63,9 +63,9 @@
 
                         </div>
                         <div class="col-md-6 w-auto contain" [mdePopoverTriggerFor]="cartPopover"
-                        [mdePopoverOffsetX]="-280" [mdePopoverOffsetY]="60" mdePopoverTriggerOn="click">
+                        [mdePopoverOffsetX]="-280" [mdePopoverOffsetY]="60" mdePopoverTriggerOn="click" >
                         <div style="display:flex; flex-direction: column; position: relative;">
-                            <span class="count">3</span>
+                            <span class="count">{{cartItems.length}}</span>
                             <img src="https://cdn0.iconfinder.com/data/icons/e-commerce-set-03/64/shopping-bags-512.png"
                                 height="25px" width="25px">
                             <span>BAG</span>
@@ -174,7 +174,7 @@
             <div class="flex-item-center">
                 <mat-icon fontSet="material-icons-outlined">work_outline</mat-icon>
                 <div class="very-small-gap"></div>
-                <span style="font-size: 20px; font-weight: 500;">Your Order (3)</span>
+                <span style="font-size: 20px; font-weight: 500;">Your Order ({{cartItems.length}})</span>
             </div>
             <mat-icon fontSet="material-icons-outlined" (click)="closeCartPopover()">close</mat-icon>
         </div>
@@ -182,21 +182,25 @@
             <ul style="padding: 0;">
                 <li class="flex-with-space-between padding" *ngFor="let item of cartItems">
                     <div class="flex-item-center">
-                        <mat-form-field style="width: 60px; background: rgb(246, 246, 246);" color="dark">
+                        <!-- <mat-form-field style="width: 60px; background: rgb(246, 246, 246);" color="dark">
                             <mat-select>
                                 <mat-option *ngFor="let item of quantity" [value]="item.value"
                                     style="margin-left: 5px !important;">
                                     {{item.viewValue}}
                                 </mat-option>
                             </mat-select>
-                        </mat-form-field>
+                        </mat-form-field> -->
                         <div class="small-gap"></div>
                         <div class="flex-column">
-                            <span style="font-size: 14px; font-weight: 500;"> JP245541 </span>
-                            <a style="margin-top: 5px;" class="success">With BLU Smartphone Lenses </a>
+                            <span style="font-size: 14px; font-weight: 500;"> {{item.itemName}} </span>
+                            <a style="margin-top: 5px;" class="success">{{item.quantity}} * {{item.itemPrice}}</a>
+                        </div>
+                        <div class="small-gap"></div>
+                        <div class="flex-column">
+                            <div (click)="addCartQuantity(item.cartDetailId,item.itemId,item.itemName,item.itemPrice,'',item.userId)">+</div>{{item.quantity}}<div (click)="minusitemquantity(item.itemId,item.cartDetailId,item.itemPrice,item.userId)">-</div>
                         </div>
                     </div>
-                    <div><span>₹240.00</span></div>
+                    <div><span>₹{{item.totalPrice}}</span></div>
                 </li>
             </ul>
         </div>
@@ -204,13 +208,13 @@
             <button [routerLink]="['/shopping-cart']" (click)="closeCartPopover()"  mat-raised-button class="full-width full-height success-background" >
                 <div class="flex-with-space-between" style="padding: 5px;">
                     <div>
-                        (3)
+                        ({{cartItems.length}})
                     </div>
                     <div>
                         Next: Checkout
                     </div>
                     <div>
-                        ₹600.00
+                        ₹{{totalAmount}}
                     </div>
                 </div>
             </button>

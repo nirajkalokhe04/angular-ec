@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
       this.user.mobileNumber = userObj.mobile;
       this.user.userId = userObj.id;
       this.loginService.loggedIn.next(this.user);
+      sessionStorage.setItem('mobileNumber',userObj.mobile);
+      sessionStorage.setItem('userId',userObj.id);
       this.onNoClick();
     }, err=>{
       console.log("Username or password is wrong. Please try again.");

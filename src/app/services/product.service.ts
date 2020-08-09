@@ -26,7 +26,7 @@ export class ProductService {
   }
 
   getSimillarProducts(): Observable<any> {
-    return this.httpClient.get(this.api+"/simillarProducts");
+    return this.httpClient.post<any>(this.baseURL+"item/filter","{'subCategoryId':'402881f2738f9c6e01738f9ef7bd0002'}");
   }
 
   // public getSingleProduct(id: string): Observable<any> {
