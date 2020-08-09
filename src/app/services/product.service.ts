@@ -48,4 +48,8 @@ export class ProductService {
   getdashboardoffers(): Observable<any> {
     return this.httpClient.get(this.baseURL+"offer-products/");
   }
+
+  addCustomer(formData): Observable<any> {
+    return this.httpClient.post<any>(this.baseURL+"Customers",formData);
+  }
 }

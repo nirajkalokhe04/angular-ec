@@ -33,7 +33,7 @@
                 <mat-icon fontSet="material-icons-outlined" class="black-color">phone</mat-icon>
             </span>
         </div>
-        <input class="form-control" placeholder="Mobile Number" type="number" formControlName="mobileNumber">
+        <input class="form-control" placeholder="Mobile Number" type="number" formControlName="mobile">
     </div>
     <div class="input-group form-group-no-border mg-20">
         <div class="input-group-prepend">
@@ -43,7 +43,7 @@
         </div>
         <input class="form-control" placeholder="Password" type="password" formControlName="password">
     </div>
-    <button class="btn btn-block btn-round dark-background white-color" style="margin-top:30px;">Register</button>
+    <button class="btn btn-block btn-round dark-background white-color" style="margin-top:30px;" (click)="onRegister()">Register</button>
     <div class="login">
         <span>Already have an account?</span>
         <span class="btn btn-link cursor" (click)="onLoginClick()">Log in</span>

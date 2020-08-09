@@ -49,9 +49,9 @@ export class HeaderComponent implements OnInit {
     this.loginService.loggedIn.subscribe(next => {
       this.user = next;
     });
-    // this.loadingService.progressEnable.subscribe(next => {
-    //   this.loadingEnable = next;
-    // });
+    this.loadingService.progressEnable.subscribe(next => {
+      this.loadingEnable = next;
+    });
 
    
   }
