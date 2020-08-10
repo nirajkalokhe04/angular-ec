@@ -62,6 +62,7 @@ import { WishlistComponent } from './myprofile/wishlist/wishlist.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxSkltnModule, SkltnConfig } from 'ngx-skltn';
 import { SignupComponent } from './common/signup/signup.component';
+import { OrderdetailComponent } from './myprofile/orderdetail/orderdetail.component';
 
 const skltnConfig: SkltnConfig = {
   rectRadius: 10,
@@ -89,7 +90,8 @@ const skltnConfig: SkltnConfig = {
     ReviewsRatingComponent,
     NotificationsComponent,
     WishlistComponent,
-    SignupComponent
+    SignupComponent,
+    OrderdetailComponent
   ],
   imports: [
     FormsModule,
