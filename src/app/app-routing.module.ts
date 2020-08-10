@@ -13,6 +13,7 @@ import { WishlistComponent } from './myprofile/wishlist/wishlist.component';
 import { MyRewardsComponent } from './myprofile/my-rewards/my-rewards.component';
 import { NotificationsComponent } from './myprofile/notifications/notifications.component';
 import {AuthService } from './services/auth-service';
+import { OrderdetailComponent } from './myprofile/orderdetail/orderdetail.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
       {
         path: 'notifications',
         component: NotificationsComponent
+      },
+      {
+        path: 'orderdetail',
+        component: OrderdetailComponent
       },
       {
         path: 'reviews',
