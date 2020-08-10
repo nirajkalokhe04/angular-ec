@@ -21,11 +21,11 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'products/fruits',
+    path: 'products/Fruits',
     component: ProductsComponent
   },
   {
-    path: 'products/vegetables',
+    path: 'products/vegetable',
     component: ProductsComponent
   },
   {

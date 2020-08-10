@@ -69,7 +69,9 @@
 <div class="container">
     <div class="row">
         <!-- <div class="" *ngFor="let vegData of vegetableData;let i = index"> -->
-            <div class="col-md-3 mt-4" *ngFor="let vegData of vegetableData;let i = index" ><!--(click)="productHome(vegData.id)"-->
+            <div *ngFor="let vegData of vegetableData;let i = index" >
+            <div class="col-md-12 mt-4"  *ngIf="vegData.subCategory.category.categoryName == lastWord"><!--(click)="productHome(vegData.id)"-->
+                
                 <div class="card">
                     <img class="card-img-top" [src]="vegData.image" alt="Card image cap">
                     <div class="card-body">
@@ -89,8 +91,8 @@
                         </div>
                     <!-- </div> -->
                   </div>
+                </div>
             </div>
-
 
             <!-- <div class="col-md-12">
                 <div class="text-left p-2 thumbnail-image bg-light border rounded-lg m-1">
