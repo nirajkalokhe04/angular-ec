@@ -47,6 +47,11 @@ export class HeaderComponent implements OnInit {
     ,private productService: ProductService
     
     ) { 
+      this.user={
+        "userId":"402881f273d2c2610173d2c956f00001",
+        "mobileNumber":"8888394005"
+      }
+      sessionStorage.setItem("userId",this.user.userId);
       if(this.user!=undefined&&this.user!=null){
         this.loadCartItems(this.user.userId);
       }
@@ -100,6 +105,7 @@ export class HeaderComponent implements OnInit {
     this.user = null;
 
     this.loginService.loggedIn.next(this.user);
+    sessionStorage.clear();
     this.router.navigate(['home']);
   }
   closeCartPopover() {
@@ -149,5 +155,9 @@ export class HeaderComponent implements OnInit {
 
     }
     });
+  }
+
+  firstFunction() {    
+    alert( 'Hello ' + '\nWelcome to C# Corner \nFunction in First Component');    
   }
 }

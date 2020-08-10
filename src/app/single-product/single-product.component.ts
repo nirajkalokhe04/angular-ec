@@ -121,6 +121,8 @@ export class SingleProductComponent implements OnInit {
   // onImageClick(index:number){
   //   this.imgFileName = this.product.image[index];
   // }
+  prevBtnClick(){}
+  onImageClick(number){}
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log("id"+this.id);

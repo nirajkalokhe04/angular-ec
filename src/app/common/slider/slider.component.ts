@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/interfaces/Ilogin';
-import { LoginService } from 'src/app/services/login.service';
 import { HomeService } from 'src/app/services/home.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { ItemModal } from '../../modal/item-modal';
+import { CartItem } from 'src/app/modal/cart-item-modal';
+import { CartService } from 'src/app/services/cart.service';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
 
 
 @Component({
@@ -161,7 +162,12 @@ export class SliderComponent implements OnInit {
 
   items: ItemModal[];
 
-  constructor(private homeService: HomeService, sanitizer: DomSanitizer, private router: Router, private productService: ProductService) {
+  constructor(private homeService: HomeService, 
+    sanitizer: DomSanitizer,
+     private router: Router, 
+     private productService: ProductService,
+     private cartservice : CartService,
+     private eventEmitterService: EventEmitterService ) {
 
   }
 
@@ -180,4 +186,36 @@ export class SliderComponent implements OnInit {
   productHome(id) {
     this.router.navigate(['product/' + id]);
   }
+  addProductToCart(data){
+    this.firstComponentFunction();
+    let cartItem = new CartItem();
+    cartItem.userId=sessionStorage.getItem("userId");
+    cartItem.itemId=data.id;
+    cartItem.itemName=data.itemName;
+    cartItem.itemPrice=data.regularPrice-(data.regularPrice*data.price/100);
+    cartItem.quantity=1;
+
+    this.cartservice.addProductToCart(cartItem).subscribe(res=>{
+      console.log(res);
+      this.loadCartItems(cartItem.userId);
+    });
+
+  }
+
+  loadCartItems(userId) {
+    this.cartservice.getCarts(userId).subscribe(res => {
+      // this.cartItems = res;
+      for (var i = 0; i < res.length; i++) {
+        var element = res[i];
+        console.log(element.price);
+        // how to add each price and get a total 
+        // this.totalAmount +=  (element.totalPrice);
+
+    }
+    });
+  }
+
+  firstComponentFunction(){    
+    this.eventEmitterService.onFirstComponentButtonClick();    
+  }  
 }

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { ItemModal } from '../modal/item-modal';
 import { CartItem } from '../modal/cart-item-modal';
+import { Order } from '../modal/order-modal';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,11 +25,17 @@ export class CartService {
     return this.httpClient.get<any[]>(`${this.baseURL}cartItems/${userId}`);
   }
 
-  addProductToCart(product: CartItem){
+  addProductToCart(product: CartItem): Observable<any> {
     return this.httpClient.post<number>(`${this.baseURL}addCartItem/`,product,httpOptions);
   }
 
+  removeCartItem(itemId: string,userId:string): Observable<any> {
+    return this.httpClient.post<number>(`${this.baseURL}deletecartItem/${itemId}/${userId}`,httpOptions);
+  }
 
+  placeorder(order: Order): Observable<any> {
+    return this.httpClient.post<String>(`${this.baseURL}placeOrder/`,order,httpOptions);
+  }
   /* cartItems : CartItem[];
   cartTotal = 0;
   cartDiscount = 0;
